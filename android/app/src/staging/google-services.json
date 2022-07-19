@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "640044989417",
+    "project_id": "edtrons",
+    "storage_bucket": "edtrons.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640044989417:android:6f15f33b383015215e6978",
+        "android_client_info": {
+          "package_name": "com.sosmed.technosantra.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "640044989417-nshj5p13kn9g4evlhd5hqj9bh148dnqn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZsv45Nm0mheAiYc_-e7I-bqKEvyvZnNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "640044989417-nshj5p13kn9g4evlhd5hqj9bh148dnqn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "640044989417-cvdiu3cpeffbgo68nbtf42m2j528pk6s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sosmed.technosantra.app.dev"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640044989417:android:faadc1903ae121ff5e6978",
+        "android_client_info": {
+          "package_name": "com.sosmed.technosantra.app.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "640044989417-nshj5p13kn9g4evlhd5hqj9bh148dnqn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZsv45Nm0mheAiYc_-e7I-bqKEvyvZnNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "640044989417-nshj5p13kn9g4evlhd5hqj9bh148dnqn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "640044989417-cvdiu3cpeffbgo68nbtf42m2j528pk6s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sosmed.technosantra.app.dev"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640044989417:android:4738c4333af706655e6978",
+        "android_client_info": {
+          "package_name": "com.sosmed.technosantra.app.staging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "640044989417-nshj5p13kn9g4evlhd5hqj9bh148dnqn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZsv45Nm0mheAiYc_-e7I-bqKEvyvZnNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "640044989417-nshj5p13kn9g4evlhd5hqj9bh148dnqn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "640044989417-cvdiu3cpeffbgo68nbtf42m2j528pk6s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sosmed.technosantra.app.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,116 @@
+name: tehcnosantra_font
+description: A new Flutter package project.
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.17.0 <2.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+  # To add assets to your package, add an assets section, like this:
+  # assets:
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
+  #
+  # For details regarding assets in packages, see
+  # https://flutter.dev/assets-and-images/#from-packages
+  #
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+
+  # To add custom fonts to your package, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-BlackItalic.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-Black.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-ExtraBoldItalic.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-ExtraBold.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-BoldItalic.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-Bold.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-SemiBoldItalic.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-SemiBold.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-MediumItalic.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-Medium.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-Regular.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-LightItalic.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-Light.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-ExtraLightItalic.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-ExtraLight.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-ThinItalic.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-Thin.ttf
+        - asset: packages/tehcnosantra_font/fonts/Poppins/Poppins-Italic.ttf
+          style: italic
+    - family: Helveticaneue
+      fonts:
+        - asset: packages/tehcnosantra_font/fonts/Helveticaneue/HelveticaNeue-BlackCond.ttf
+        - asset: packages/tehcnosantra_font/fonts/Helveticaneue/HelveticaNeue-Bold.ttf
+        - asset: packages/tehcnosantra_font/fonts/Helveticaneue/HelveticaNeue-Light.ttf
+        - asset: packages/tehcnosantra_font/fonts/Helveticaneue/HelveticaNeue-Medium.ttf
+        - asset: packages/tehcnosantra_font/fonts/Helveticaneue/HelveticaNeue-Thin.ttf
+        - asset: packages/tehcnosantra_font/fonts/Helveticaneue/HelveticaNeue.ttf
+        - asset: packages/tehcnosantra_font/fonts/Helveticaneue/HelveticaNeueBd.ttf
+        - asset: packages/tehcnosantra_font/fonts/Helveticaneue/HelveticaNeueHv.ttf
+        - asset: packages/tehcnosantra_font/fonts/Helveticaneue/HelveticaNeueIt.ttf
+          style: italic
+        - asset: packages/tehcnosantra_font/fonts/Helveticaneue/HelveticaNeueLt.ttf
+        - asset: packages/tehcnosantra_font/fonts/Helveticaneue/HelveticaNeueMed.ttf
+    - family: Roboto
+      fonts:
+        - asset: packages/tehcnosantra_font/fonts/Roboto/Roboto-BlackItalic.ttf
+          style: italic
+        - asset: packages/tehcnosantra_font/fonts/Roboto/Roboto-Black.ttf
+        - asset: packages/tehcnosantra_font/fonts/Roboto/Roboto-BoldItalic.ttf
+          style: italic
+        - asset: packages/tehcnosantra_font/fonts/Roboto/Roboto-Bold.ttf
+        - asset: packages/tehcnosantra_font/fonts/Roboto/Roboto-MediumItalic.ttf
+          style: italic
+        - asset: packages/tehcnosantra_font/fonts/Roboto/Roboto-Medium.ttf
+        - asset: packages/tehcnosantra_font/fonts/Roboto/Roboto-Italic.ttf
+          style: italic
+        - asset: packages/tehcnosantra_font/fonts/Roboto/Roboto-Regular.ttf
+        - asset: packages/tehcnosantra_font/fonts/Roboto/Roboto-LightItalic.ttf
+          style: italic
+        - asset: packages/tehcnosantra_font/fonts/Roboto/Roboto-Light.ttf
+        - asset: packages/tehcnosantra_font/fonts/Roboto/Roboto-ThinItalic.ttf
+          style: italic
+        - asset: packages/tehcnosantra_font/fonts/Roboto/Roboto-Thin.ttf
+    - family: Baloo
+      fonts:
+        - asset: packages/tehcnosantra_font/fonts/Baloo/Baloo2-ExtraBold.ttf
+        - asset: packages/tehcnosantra_font/fonts/Baloo/Baloo2-Bold.ttf
+        - asset: packages/tehcnosantra_font/fonts/Baloo/Baloo2-SemiBold.ttf
+        - asset: packages/tehcnosantra_font/fonts/Baloo/Baloo2-Medium.ttf
+        - asset: packages/tehcnosantra_font/fonts/Baloo/Baloo2-Regular.ttf
+    - family: Inter
+      fonts:
+        - asset: packages/tehcnosantra_font/fonts/Inter/Inter-Black.ttf
+        - asset: packages/tehcnosantra_font/fonts/Inter/Inter-ExtraBold.ttf
+        - asset: packages/tehcnosantra_font/fonts/Inter/Inter-Bold.ttf
+        - asset: packages/tehcnosantra_font/fonts/Inter/Inter-SemiBold.ttf
+        - asset: packages/tehcnosantra_font/fonts/Inter/Inter-Medium.ttf
+        - asset: packages/tehcnosantra_font/fonts/Inter/Inter-Regular.ttf
+        - asset: packages/tehcnosantra_font/fonts/Inter/Inter-Light.ttf
+        - asset: packages/tehcnosantra_font/fonts/Inter/Inter-ExtraLight.ttf
+        - asset: packages/tehcnosantra_font/fonts/Inter/Inter-Thin.ttf
+
+  # For details regarding fonts in packages, see
+  # https://flutter.dev/custom-fonts/#from-packages

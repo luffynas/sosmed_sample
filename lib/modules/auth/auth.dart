@@ -1,0 +1,10 @@
+export './auth.dart';
+export './bloc/auth_bloc.dart';
+export './component/auth_header.dart';
+export './pages/auth_complete_profile_page.dart';
+export './pages/auth_first_page.dart';
+export './pages/auth_password_reset_page.dart';
+export './pages/auth_screen.dart';
+export './pages/auth_sign_page.dart';
+export './pages/auth_signup_page.dart';
+export './pages/auth_verify_otp_page.dart';

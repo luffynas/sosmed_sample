@@ -1,0 +1,12 @@
+{
+    "@@locale": "id",
+    "justNow": "Baru saja",
+    "@justNow": {
+        "description": "Baru saja"
+    },
+    "@@locale": "id",
+    "oneTimeAgo": "Satu menit lalu",
+    "@oneTimeAgo": {
+        "description": "Satu menit lalu"
+    }
+}

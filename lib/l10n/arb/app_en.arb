@@ -1,0 +1,12 @@
+{
+    "@@locale": "en",
+    "justNow": "Just now",
+    "@justNow": {
+        "description": "Just now"
+    },
+    "@@locale": "en",
+    "oneTimeAgo": "oneTimeAgo",
+    "@oneTimeAgo": {
+        "description": "oneTimeAgo"
+    }
+}

@@ -1,0 +1,170 @@
+name: sosmed_sample
+description: A Very Good Project created by Very Good CLI.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  auto_route: ^4.0.1
+  app_settings: ^4.1.6
+  bloc: ^8.0.3
+  camera: ^0.9.8+1
+  connectivity_plus: ^2.3.3
+  device_preview: ^1.1.0
+  dots_indicator: ^2.1.0
+  equatable: ^2.0.3
+  file_picker: ^4.6.1
+  firebase_analytics: ^9.1.8
+  firebase_auth: ^3.3.18
+  firebase_core: ^1.17.0
+  firebase_messaging: ^11.4.0
+  firebase_crashlytics: ^2.8.0
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.0.1
+  flutter_localizations:
+    sdk: flutter
+  flutter_dotenv: ^5.0.2
+  flutter_speed_dial: ^6.0.0
+  flutter_mentions: ^2.0.1
+  flutter_native_image: ^0.0.6
+  formz: ^0.4.1
+  get_it: ^7.2.0
+  http: ^0.13.3
+  intl: ^0.17.0
+  image_picker: ^0.8.5+3
+  stream_transform: ^2.0.0
+  json_annotation: ^4.5.0
+  rxdart: ^0.27.3
+  hive: ^2.2.1
+  hive_flutter: ^1.1.0
+  app_links: ^3.2.0
+  shimmer: ^2.0.0
+  overlay_support: ^2.0.0
+  path_provider: ^2.0.11
+  progressive_image: ^2.0.0
+  pull_to_refresh: ^2.0.0
+  timeago: ^3.2.2
+  timeline_tile: ^2.0.0
+  google_fonts: ^3.0.1
+  wechat_assets_picker: ^7.3.2
+
+  tehcnosantra_font:
+    path: tehcnosantra_font
+
+dev_dependencies:
+  auto_route_generator: ^4.0.0
+  bloc_test: ^9.0.3
+  flutter_test:
+    sdk: flutter
+  hive_generator: 1.1.3
+  mocktail: ^0.3.0
+  flutter_flavorizr: ^2.1.3
+  build_runner: ^2.1.11
+  json_serializable: ^6.2.0
+  very_good_analysis: ^3.0.1
+
+flutter:
+  uses-material-design: true
+  generate: true
+  assets:
+    - .env
+    - assets/images/
+    - assets/images/walkthrough/
+    - assets/images/menu/
+    - assets/images/placeholder/
+    - assets/images/payment/
+    - assets/images/error/
+    - assets/images/ornament/
+    - assets/images/background/
+    - assets/images/flag/
+  fonts:
+    - family: AppIcon
+      fonts:
+        - asset: assets/fonts/app-icon.ttf
+
+flavorizr:
+  app:
+    android:
+      flavorDimensions: "flavor-type"
+    ios:
+
+  flavors:
+    development:
+      app:
+        name: "[DEV] Sosmed"
+
+      android:
+        applicationId: "com.sosmed.technosantra.app.dev"
+        resValues:
+          app_name:
+            type: "string"
+            value: "Sosmed DEV"
+          # facebook_app_id:
+          #   type: "string"
+          #   value: "549511223175430"
+          # fb_login_protocol_scheme:
+          #   type: "string"
+          #   value: "fb549511223175430"
+        firebase:
+          config: ".firebase/development/google-services.json"
+
+      ios:
+        bundleId: "com.sosmed.technosantra.app.dev"
+        firebase:
+          config: ".firebase/development/GoogleService-Info.plist"
+
+    staging:
+      app:
+        name: "[STG] Sosmed"
+
+      android:
+        applicationId: "com.sosmed.technosantra.app.staging"
+        resValues:
+          app_name:
+            type: "string"
+            value: "Sosmed STAGING"
+          # facebook_app_id:
+          #   type: "string"
+          #   value: "5807482655935458"
+          # fb_login_protocol_scheme:
+          #   type: "string"
+          #   value: "fb5807482655935458"
+          # facebook_client_token:
+          #   type: "string"
+          #   value: "efa9d0973bde23aaa97a1d6c1188a53c"
+        firebase:
+          config: ".firebase/staging/google-services.json"
+
+      ios:
+        bundleId: "com.sosmed.technosantra.app.staging"
+        firebase:
+          config: ".firebase/staging/GoogleService-Info.plist"
+
+    production:
+      app:
+        name: "Sosmed"
+
+      android:
+        applicationId: "com.sosmed.technosantra.app"
+        resValues:
+          app_name:
+            type: "string"
+            value: "Sosmed"
+          # facebook_app_id:
+          #   type: "string"
+          #   value: "387274396760801"
+          # fb_login_protocol_scheme:
+          #   type: "string"
+          #   value: "fb387274396760801"
+          # facebook_client_token:
+          #   type: "string"
+          #   value: "23138a0e5cc1118afa65b7602409fd61"
+        firebase:
+          config: ".firebase/production/google-services.json"
+      ios:
+        bundleId: "com.sosmed.technosantra.app"
+        firebase:
+          config: ".firebase/production/GoogleService-Info.plist"
