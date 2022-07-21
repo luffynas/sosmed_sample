@@ -82,14 +82,14 @@ release-live-aab:
 test-staging:
 	cp .env.staging .env
 	flutter clean
-	flutter build apk --release --build-name=$(VERSION) --build-number=$(BUILD_NUMBER) --flavor staging  --obfuscate --split-debug-info=./edtrons_mobile_android_staging
+	flutter build apk --release --build-name=$(VERSION) --build-number=$(BUILD_NUMBER) --flavor production lib/main_staging.dart  --obfuscate --split-debug-info=./mobile_android_staging
 
 test-live:
 	cp .env.live .env
 	flutter clean
-	flutter build apk --release --build-name=$(VERSION) --build-number=$(BUILD_NUMBER_LIVE) --flavor production  --obfuscate --split-debug-info=./edtrons_mobile_android_live
+	flutter build apk --release --build-name=$(VERSION) --build-number=$(BUILD_NUMBER_LIVE) --flavor production lib/main_production.dart --obfuscate --split-debug-info=./mobile_android_live
 
 test-live-aab:
 	cp .env.live .env
 	flutter clean
-	flutter build appbundle --release --build-name=$(VERSION) --build-number=$(BUILD_NUMBER_LIVE) --flavor production  --obfuscate --split-debug-info=./edtrons_mobile_android_live
+	flutter build appbundle --release --build-name=$(VERSION) --build-number=$(BUILD_NUMBER_LIVE) --flavor production lib/main_production.dart  --obfuscate --split-debug-info=./mobile_android_live
