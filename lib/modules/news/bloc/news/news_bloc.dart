@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:sosmed_sample/models/menu_item_app.dart';
 import 'package:sosmed_sample/modules/news/datasource/local/news_local.dart';
 import 'package:sosmed_sample/modules/news/models/news.dart';
 import 'package:sosmed_sample/modules/news/repositories/news_repository.dart';
@@ -31,12 +30,11 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     if (event.fresh) {
       emit(state.copy(status: NewsStatus.initial));
     }
-    // emit(state.copy());
 
     await emit.forEach<List<News>>(
-      userRepository2.getUsers(
+      newsRepository.getPosts(
         fresh: event.fresh,
-        offset: state.users.length,
+        offset: state.news.length,
       ),
       onData: (news) => state.copy(
         status: news.isEmpty ? NewsStatus.empty : NewsStatus.success,

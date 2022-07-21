@@ -12,7 +12,7 @@ class NewsRepository implements NewsInterface {
   Stream<dynamic> get status => news.statusStream.stream;
 
   @override
-  Future<void> addUser(News data) async {
+  Future<void> addPost(News data) async {
     log('message ::: addUser ::: ${data.toJson()}');
     try {
       await news.add(data);
@@ -27,7 +27,7 @@ class NewsRepository implements NewsInterface {
   }
 
   @override
-  Future<void> deleteUser(News data) async {
+  Future<void> deletePost(News data) async {
     await news.remove(data);
   }
 
@@ -37,10 +37,10 @@ class NewsRepository implements NewsInterface {
   }
 
   @override
-  Stream<News> getUser(String userId) => news.getOne(userId);
+  Stream<News> getPost(String userId) => news.getOne(userId);
 
   @override
-  Stream<List<News>> getUsers({
+  Stream<List<News>> getPosts({
     bool fresh = false,
     int limit = 20,
     int offset = 0,

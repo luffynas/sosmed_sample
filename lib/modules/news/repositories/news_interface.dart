@@ -1,13 +1,13 @@
 import 'package:sosmed_sample/modules/news/models/news.dart';
 
 abstract class NewsInterface {
-  Stream<List<News>> getUsers({bool fresh, int limit, int offset});
+  Stream<List<News>> getPosts({bool fresh, int limit, int offset});
 
-  Stream<News> getUser(String userId);
+  Stream<News> getPost(String userId);
 
-  Future<void> addUser(News news);
+  Future<void> addPost(News news);
 
-  Future<void> deleteUser(News news);
+  Future<void> deletePost(News news);
 
   Future<bool> like(News news);
 
