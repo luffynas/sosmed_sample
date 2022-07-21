@@ -1,31 +1,40 @@
 part of 'news_bloc.dart';
 
 enum NewsStatus {
-  dashboard,
-  lessonSchedule,
-  lessonSubject,
-  lessonDetailSubject,
-  taskList,
-  valueReport,
-  tutoring,
-  aboutSchool,
-  agendaSchool,
-  studentList,
-  teacherList,
-  profile,
+  initial,
+  loading,
+  success,
+  failure,
+  empty,
 }
 
 class NewsState extends Equatable {
-  const NewsState({this.status = NewsStatus.dashboard, this.subject});
+  const NewsState({
+    this.status = NewsStatus.initial,
+    this.news = const <News>[],
+    this.hasReachedMax = false,
+  });
 
   final NewsStatus status;
-  final MenuItemApp? subject;
+  final List<News> news;
+  final bool hasReachedMax;
 
-  NewsState copy({NewsStatus? status, MenuItemApp? subject}) => NewsState(
+  NewsState copy({
+    NewsStatus? status,
+    List<News>? news,
+    bool? hasReachedMax,
+  }) =>
+      NewsState(
         status: status ?? this.status,
-        subject: subject ?? this.subject,
+        news: news ?? this.news,
+        hasReachedMax: hasReachedMax ?? this.hasReachedMax,
       );
 
   @override
-  List<Object> get props => [status];
+  String toString() {
+    return '''NewsState { status: $status, hasReachedMax: $hasReachedMax, posts: ${news.length} }''';
+  }
+
+  @override
+  List<Object> get props => [status, news, hasReachedMax];
 }

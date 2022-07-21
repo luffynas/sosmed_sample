@@ -6,7 +6,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:sosmed_sample/modules/home/component/user_card_view.dart';
+import 'package:sosmed_sample/modules/news/component/user_card_view.dart';
 import 'package:sosmed_sample/modules/user/bloc/users/users_bloc.dart';
 import 'package:sosmed_sample/route/router.gr.dart';
 import 'package:sosmed_sample/theme/color.dart';
@@ -31,12 +31,17 @@ class _UsersPageState extends State<UsersPage> {
   Future<void> _onRefresh() async {
     // notifs.clear();
     // notifBloc.add(LoadNotifGroup(fresh: true));
+    log('message :: _onRefresh');
     context.read<UsersBloc>().add(const LoadUsers(fresh: true));
 
+    log('message :: _refreshController 1:: ${_refreshController.isLoading}');
+    log('message :: _refreshController 2:: ${_refreshController.isRefresh}');
+    log('message :: _refreshController 3:: ${_refreshController.isTwoLevel}');
+
     // monitor network fetch
-    await Future.delayed(const Duration(milliseconds: 1000));
+    // await Future.delayed(const Duration(milliseconds: 1000));
     // if failed,use refreshFailed()
-    _refreshController.refreshCompleted();
+    // _refreshController.refreshCompleted();
   }
 
   Future<void> _onLoading() async {
@@ -45,7 +50,11 @@ class _UsersPageState extends State<UsersPage> {
     // }
     // // monitor network fetch
     // notifBloc.add(LoadNotifGroup(limit: 10, offset: notifs.length));
-    context.read<UsersBloc>().add(const LoadUsers());
+    context.read<UsersBloc>().add(const LoadUsers(fresh: false));
+
+    log('message :: _refreshController 1:: ${_refreshController.isLoading}');
+    log('message :: _refreshController 2:: ${_refreshController.isRefresh}');
+    log('message :: _refreshController 3:: ${_refreshController.isTwoLevel}');
   }
 
   @override
@@ -83,6 +92,22 @@ class _UsersPageState extends State<UsersPage> {
 
   Widget _buildContent() {
     return BlocBuilder<UsersBloc, UsersState>(
+      buildWhen: (oldState, newState) {
+        if (newState.status == UsersStatus.success) {
+          log('message :: _refreshController :: ${_refreshController.isLoading}');
+          log('message :: _refreshController :: ${_refreshController.isRefresh}');
+          log('message :: _refreshController :: ${_refreshController.isTwoLevel}');
+          if (_refreshController.isRefresh) {
+            _refreshController.refreshCompleted();
+          }
+          if (_refreshController.isLoading) {
+            _refreshController.loadComplete();
+          }
+
+          return true;
+        }
+        return false;
+      },
       builder: (context, state) {
         switch (state.status) {
           case UsersStatus.initial:
@@ -102,17 +127,17 @@ class _UsersPageState extends State<UsersPage> {
           case UsersStatus.success:
             final users = state.users;
             log('message ::: data ::: ${users.length}');
-            _refreshController.loadComplete();
 
             return GridView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
+              cacheExtent: 1,
               itemCount: users.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 8,
                 mainAxisSpacing: 8,
-                childAspectRatio: 1 / 1.2,
+                childAspectRatio: 1 / 1.3,
               ),
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
               itemBuilder: (context, index) {

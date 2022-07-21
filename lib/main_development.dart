@@ -10,14 +10,22 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sosmed_sample/bootstrap.dart';
 import 'package:sosmed_sample/main_app.dart';
 import 'package:sosmed_sample/models/user.dart';
+import 'package:sosmed_sample/modules/news/models/news.dart';
+import 'package:sosmed_sample/modules/news/models/owner.dart';
 import 'package:sosmed_sample/utils/preference.dart';
 
 void main() async {
   // ignore: omit_local_variable_types
 
   await Hive.initFlutter();
-  Hive.registerAdapter(UserAdapter());
+  Hive
+    ..registerAdapter(UserAdapter())
+    ..registerAdapter(NewsAdapter())
+    ..registerAdapter(OwnerAdapter());
+
   await Hive.openBox<User>('users');
+  await Hive.openBox<News>('news');
+  await Hive.openBox<Owner>('owner');
 
   await dotenv.load(fileName: ".env");
   await SpUtils.getInstance();

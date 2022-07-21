@@ -3,13 +3,11 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sosmed_sample/models/user.dart';
-import 'package:sosmed_sample/modules/user/bloc/users/users_bloc.dart';
-import 'package:sosmed_sample/theme/app_icons.dart';
-import 'package:sosmed_sample/theme/color.dart';
+import 'package:sosmed_sample/modules/news/component/news_card_view.dart';
+import 'package:sosmed_sample/modules/user/bloc/users_detail/users_detail_bloc.dart';
+import 'package:sosmed_sample/modules/user/widget/user_detail_widget.dart';
 import 'package:sosmed_sample/theme/style.dart';
-import 'package:sosmed_sample/utils/date_time_util.dart';
-import 'package:sosmed_sample/widgets/avatar_widget.dart';
-import 'package:sosmed_sample/widgets/divider_widget.dart';
+import 'package:sosmed_sample/widgets/delegate_sliver.dart';
 
 class ProfileDetailView extends StatefulWidget {
   final User user;
@@ -27,7 +25,7 @@ class _ProfileDetailViewState extends State<ProfileDetailView> {
     user = widget.user;
     super.initState();
 
-    context.read<UsersBloc>().add(LoadUserDetail(userId: user!.id!));
+    context.read<UsersDetailBloc>().add(LoadUserDetail(userId: user!.id!));
   }
 
   @override
@@ -37,194 +35,52 @@ class _ProfileDetailViewState extends State<ProfileDetailView> {
       appBar: AppBar(
         title: const Text('Profile Detail', style: AppStyle.appBarTitle),
       ),
-      body: BlocListener<UsersBloc, UsersState>(
+      body: BlocListener<UsersDetailBloc, UsersDetailState>(
         listener: (context, state) {
-          switch (state.status) {
-            case UsersStatus.success:
-              user = state.user;
-              setState(() {});
-              break;
-            default:
+          if (state.status == UsersDetailStatus.success) {
+            user = state.user;
+            setState(() {});
           }
         },
-        child: Container(
-          child: ListView(
-            children: [
-              Stack(
-                children: [
-                  SizedBox(
-                    child: Image.asset(
-                      'assets/images/background/ic_profile_background.png',
-                    ),
+        child: CustomScrollView(
+          slivers: [
+            SliverPersistentHeader(
+              delegate: SliverDelegate(
+                height: 420,
+                child: UserDetailWidget(user: user!),
+              ),
+            ),
+            SliverPersistentHeader(
+              pinned: true,
+              floating: true,
+              delegate: SliverDelegate(
+                height: 60,
+                child: Container(
+                  color: Colors.white,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 16,
                   ),
-                  Positioned(
-                    top: 0,
-                    left: 0,
-                    bottom: 0,
-                    right: 0,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        AvatarWidget(
-                          heigh: 89,
-                          width: 89,
-                          thumbnailUrl: user?.picture ?? '',
-                          url: user?.picture ?? '',
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          '${user?.firstName} ${user?.lastName} ',
-                          style: AppStyle.bold.copyWith(fontSize: 16),
-                        ),
-                        const SizedBox(height: 8),
-                        Text('${user?.email}', style: AppStyle.standart),
-                      ],
-                    ),
+                  child: Text(
+                    'Posts',
+                    style: AppStyle.medium.copyWith(fontSize: 20),
                   ),
-                ],
-              ),
-              const SizedBox(height: 24),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Bio',
-                      style: AppStyle.bold.copyWith(color: AppColors.primary),
-                    ),
-                    const SizedBox(height: 8),
-                    const Text(
-                      'Freelancer',
-                      style: AppStyle.standart,
-                    ),
-                  ],
                 ),
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'No Ponsel',
-                      style: AppStyle.bold.copyWith(color: AppColors.primary),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      '${user?.phone}',
-                      style: AppStyle.standart,
-                    ),
-                  ],
-                ),
+            ),
+            // const SizedBox(height: 16),
+            // const DividerWidget(),
+            SliverToBoxAdapter(
+              child: ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return NewsCardView(onDetailPost: (dd) {});
+                },
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Tanggal Lahir',
-                      style: AppStyle.bold.copyWith(color: AppColors.primary),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      user?.dateOfBirth == null
-                          ? ''
-                          : dateTimeUtils
-                              .formatedDMMMY(user?.dateOfBirth ?? ''),
-                      style: AppStyle.standart,
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 24),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(
-                  'Social Media',
-                  style: AppStyle.medium.copyWith(fontSize: 20),
-                ),
-              ),
-              const SizedBox(height: 16),
-              const DividerWidget(),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Row(
-                  children: [
-                    const Icon(
-                      AppIcons.ic_facebook,
-                      size: 24,
-                      color: AppColors.primary,
-                    ),
-                    const SizedBox(width: 16),
-                    const Text(
-                      'facebook.com/zaky.dwinawan',
-                      style: AppStyle.standart,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Row(
-                  children: [
-                    const Icon(
-                      AppIcons.ic_instagram,
-                      size: 24,
-                      color: AppColors.primary,
-                    ),
-                    const SizedBox(width: 16),
-                    const Text(
-                      'instagram.com/zaky12/',
-                      style: AppStyle.standart,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Row(
-                  children: [
-                    const Icon(
-                      AppIcons.ic_twitter,
-                      size: 24,
-                      color: AppColors.primary,
-                    ),
-                    const SizedBox(width: 16),
-                    const Text(
-                      'twitter.com/zaky12/',
-                      style: AppStyle.standart,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Row(
-                  children: [
-                    const Icon(
-                      AppIcons.ic_linkedin,
-                      size: 24,
-                      color: AppColors.primary,
-                    ),
-                    const SizedBox(width: 16),
-                    const Text(
-                      'linkedin.com/in/zakydwinawan/',
-                      style: AppStyle.standart,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

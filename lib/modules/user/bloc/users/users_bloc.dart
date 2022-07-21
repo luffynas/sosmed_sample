@@ -1,43 +1,62 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
 import 'package:sosmed_sample/models/user.dart';
 import 'package:sosmed_sample/modules/user/datasource/local/user_local.dart';
 import 'package:sosmed_sample/modules/user/repositories/user_repository2.dart';
+import 'package:stream_transform/stream_transform.dart';
 
 part 'users_event.dart';
 part 'users_state.dart';
 
-class UsersBloc extends Bloc<UsersEvent, UsersState> {
-  final UserRepository2 userRepository2 = UserRepository2(UserLocal());
+const throttleDuration = Duration(milliseconds: 100);
 
+EventTransformer<E> throttleDroppable<E>(Duration duration) {
+  return (events, mapper) {
+    return droppable<E>().call(events.throttle(duration), mapper);
+  };
+}
+
+class UsersBloc extends Bloc<UsersEvent, UsersState> {
   UsersBloc() : super(const UsersState()) {
-    on<LoadUsers>(_onLoadUsers);
+    _statusStream = userRepository2.status.listen((event) {
+      log('message ::: from stream Subscribtion :: $event');
+    });
+
+    on<LoadUsers>(
+      _onLoadUsers,
+      transformer: throttleDroppable(throttleDuration),
+    );
     on<LoadMoreUser>(_onLoadMoreUser);
     on<LoadUserDetail>(_onLoadUserDetail);
     on<RemoveUsers>(_onRemoveUser);
     on<AddUsers>(_onAddUser);
   }
 
+  final UserRepository2 userRepository2 = UserRepository2(UserLocal());
+  StreamSubscription? _statusStream;
+
   Future<void> _onLoadUsers(LoadUsers event, Emitter<UsersState> emit) async {
-    // emit(state.copy(status: UsersStatus.initial));
+    if (state.hasReachedMax) return;
 
     log('message :: state.users.length ::: ${state.users.length}');
     if (event.fresh) {
       emit(state.copy(status: UsersStatus.initial));
     }
-    emit(state.copy());
+    // emit(state.copy());
 
     await emit.forEach<List<User>>(
       userRepository2.getUsers(
         fresh: event.fresh,
-        limit: 20,
         offset: state.users.length,
       ),
       onData: (users) => state.copy(
         status: users.isEmpty ? UsersStatus.empty : UsersStatus.success,
         users: users,
+        hasReachedMax: false,
       ),
       onError: (_, __) => state.copy(
         status: UsersStatus.failure,
@@ -106,11 +125,16 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> {
       userRepository2.getUser(event.userId),
       onData: (user) => state.copy(
         status: UsersStatus.success,
-        user: user,
       ),
       onError: (_, __) => state.copy(
         status: UsersStatus.failure,
       ),
     );
+  }
+
+  @override
+  Future<void> close() async {
+    await _statusStream?.cancel();
+    return super.close();
   }
 }

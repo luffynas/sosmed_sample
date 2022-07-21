@@ -4,7 +4,7 @@ import '../utils/preference.dart';
 
 part 'user.g.dart';
 
-@HiveType(typeId: 2)
+@HiveType(typeId: 0)
 class User extends HiveObject {
   User({
     this.id,

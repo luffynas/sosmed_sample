@@ -9,6 +9,8 @@ class UserRepository2 implements UserInterface {
 
   final UserLocal user;
 
+  Stream<dynamic> get status => user.statusStream.stream;
+
   @override
   Future<void> addUser(User data) async {
     log('message ::: addUser ::: ${data.toJson()}');

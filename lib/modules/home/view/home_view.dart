@@ -139,7 +139,7 @@ class _HomeViewState extends State<HomeView>
             ),
             // drawer: _buildDrawer(),
             body: PageStorage(bucket: bucket, child: _buildBody(state)),
-            // floatingActionButton: _buildFAB(),
+            floatingActionButton: _buildFAB(),
             bottomNavigationBar: const BottomNavigationSelection(),
           );
         },

@@ -12,9 +12,10 @@
 
 import 'package:auto_route/auto_route.dart' as _i14;
 import 'package:flutter/material.dart' as _i15;
+import 'package:flutter/src/widgets/framework.dart' as _i16;
 
 import '../main_app_init.dart' as _i1;
-import '../models/user.dart' as _i16;
+import '../models/user.dart' as _i17;
 import '../modules/auth/pages/auth_screen.dart' as _i13;
 import '../modules/home/view/home_view.dart' as _i3;
 import '../modules/misc/view/about_us_view.dart' as _i12;
@@ -138,7 +139,7 @@ class Walkthrough extends _i14.PageRouteInfo<void> {
 /// generated route for
 /// [_i3.HomeView]
 class HomeScreen extends _i14.PageRouteInfo<HomeScreenArgs> {
-  HomeScreen({_i15.Key? key, bool skip = false})
+  HomeScreen({_i16.Key? key, bool skip = false})
       : super(HomeScreen.name,
             path: '/home', args: HomeScreenArgs(key: key, skip: skip));
 
@@ -148,7 +149,7 @@ class HomeScreen extends _i14.PageRouteInfo<HomeScreenArgs> {
 class HomeScreenArgs {
   const HomeScreenArgs({this.key, this.skip = false});
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
   final bool skip;
 
@@ -161,7 +162,7 @@ class HomeScreenArgs {
 /// generated route for
 /// [_i4.ProfileDetailView]
 class ProfileDetailView extends _i14.PageRouteInfo<ProfileDetailViewArgs> {
-  ProfileDetailView({_i15.Key? key, required _i16.User user})
+  ProfileDetailView({_i16.Key? key, required _i17.User user})
       : super(ProfileDetailView.name,
             path: '/profileDetail',
             args: ProfileDetailViewArgs(key: key, user: user));
@@ -172,9 +173,9 @@ class ProfileDetailView extends _i14.PageRouteInfo<ProfileDetailViewArgs> {
 class ProfileDetailViewArgs {
   const ProfileDetailViewArgs({this.key, required this.user});
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
-  final _i16.User user;
+  final _i17.User user;
 
   @override
   String toString() {
@@ -212,7 +213,7 @@ class ProfileSettingView extends _i14.PageRouteInfo<void> {
 /// generated route for
 /// [_i8.PostDetailPage]
 class PostDetail extends _i14.PageRouteInfo<PostDetailArgs> {
-  PostDetail({_i15.Key? key, required int postId})
+  PostDetail({_i16.Key? key, required int postId})
       : super(PostDetail.name,
             path: '/postDetail',
             args: PostDetailArgs(key: key, postId: postId));
@@ -223,7 +224,7 @@ class PostDetail extends _i14.PageRouteInfo<PostDetailArgs> {
 class PostDetailArgs {
   const PostDetailArgs({this.key, required this.postId});
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
   final int postId;
 
@@ -271,7 +272,7 @@ class AboutUsView extends _i14.PageRouteInfo<void> {
 /// [_i13.AuthScreen]
 class AuthScreen extends _i14.PageRouteInfo<AuthScreenArgs> {
   AuthScreen(
-      {_i15.Key? key, dynamic Function(_i15.BuildContext, bool)? onSuccess})
+      {_i16.Key? key, dynamic Function(_i16.BuildContext, bool)? onSuccess})
       : super(AuthScreen.name,
             path: 'auth', args: AuthScreenArgs(key: key, onSuccess: onSuccess));
 
@@ -281,9 +282,9 @@ class AuthScreen extends _i14.PageRouteInfo<AuthScreenArgs> {
 class AuthScreenArgs {
   const AuthScreenArgs({this.key, this.onSuccess});
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
-  final dynamic Function(_i15.BuildContext, bool)? onSuccess;
+  final dynamic Function(_i16.BuildContext, bool)? onSuccess;
 
   @override
   String toString() {

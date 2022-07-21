@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:sosmed_sample/modules/home/component/news_card_view.dart';
+import 'package:sosmed_sample/modules/news/component/news_card_view.dart';
 import 'package:sosmed_sample/route/router.gr.dart';
 
 class NewsPage extends StatefulWidget {

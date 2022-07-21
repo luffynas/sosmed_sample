@@ -11,6 +11,9 @@ class LoadUsers extends UsersEvent {
   const LoadUsers({this.fresh = false});
 
   final bool fresh;
+
+  @override
+  List<Object> get props => [fresh];
 }
 
 class LoadMoreUser extends UsersEvent {

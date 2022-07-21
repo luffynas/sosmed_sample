@@ -10,6 +10,7 @@ dependencies:
   auto_route: ^4.0.1
   app_settings: ^4.1.6
   bloc: ^8.0.3
+  bloc_concurrency: ^0.2.0
   camera: ^0.9.8+1
   connectivity_plus: ^2.3.3
   device_preview: ^1.1.0

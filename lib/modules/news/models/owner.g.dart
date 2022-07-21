@@ -1,40 +1,34 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user.dart';
+part of 'owner.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class UserAdapter extends TypeAdapter<User> {
+class OwnerAdapter extends TypeAdapter<Owner> {
   @override
-  final int typeId = 0;
+  final int typeId = 2;
 
   @override
-  User read(BinaryReader reader) {
+  Owner read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return User(
+    return Owner(
       id: fields[0] as String?,
       title: fields[1] as String?,
       firstName: fields[2] as String?,
       lastName: fields[3] as String?,
       picture: fields[4] as String?,
-      gender: fields[5] as String?,
-      email: fields[6] as String?,
-      dateOfBirth: fields[7] as String?,
-      phone: fields[8] as String?,
-      registerDate: fields[9] as String?,
-      updatedDate: fields[10] as String?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, User obj) {
+  void write(BinaryWriter writer, Owner obj) {
     writer
-      ..writeByte(11)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -44,19 +38,7 @@ class UserAdapter extends TypeAdapter<User> {
       ..writeByte(3)
       ..write(obj.lastName)
       ..writeByte(4)
-      ..write(obj.picture)
-      ..writeByte(5)
-      ..write(obj.gender)
-      ..writeByte(6)
-      ..write(obj.email)
-      ..writeByte(7)
-      ..write(obj.dateOfBirth)
-      ..writeByte(8)
-      ..write(obj.phone)
-      ..writeByte(9)
-      ..write(obj.registerDate)
-      ..writeByte(10)
-      ..write(obj.updatedDate);
+      ..write(obj.picture);
   }
 
   @override
@@ -65,7 +47,7 @@ class UserAdapter extends TypeAdapter<User> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is UserAdapter &&
+      other is OwnerAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

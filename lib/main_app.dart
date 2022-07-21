@@ -23,6 +23,7 @@ import 'package:sosmed_sample/modules/home/bloc/filter/query_filter_bloc.dart';
 import 'package:sosmed_sample/modules/home/bloc/home/home_bloc.dart';
 import 'package:sosmed_sample/modules/news/bloc/news/news_bloc.dart';
 import 'package:sosmed_sample/modules/user/bloc/users/users_bloc.dart';
+import 'package:sosmed_sample/modules/user/bloc/users_detail/users_detail_bloc.dart';
 import 'package:sosmed_sample/route/router.gr.dart' as Router;
 import 'package:sosmed_sample/theme/cubit/theme_cubit.dart';
 import 'package:sosmed_sample/theme/theme_app.dart';
@@ -65,6 +66,9 @@ class MainApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => UsersBloc(),
+        ),
+        BlocProvider(
+          create: (context) => UsersDetailBloc(),
         ),
         BlocProvider(
           create: (context) => NewsBloc(),
